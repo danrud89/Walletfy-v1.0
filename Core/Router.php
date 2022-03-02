@@ -74,4 +74,41 @@ class Router
     {
         return $this->routes;
     }
+
+    /**
+     * Dispatch the route, creating the controller object and running the
+     * action method
+     *
+     * @param string $url The route URL
+     *
+     * @return void
+     */
+    public function dispatch($url)
+    {
+        $url = $this->removeQueryStringVariables($url);
+
+        if ($this->match($url)) {
+            $controller = $this->params['controller'];
+            $controller = $this->convertToStudlyCaps($controller);
+            $controller = $this->getNamespace() . $controller;
+
+            if (class_exists($controller)) {
+                $controller_object = new $controller($this->params);
+
+                $action = $this->params['action'];
+                $action = $this->convertToCamelCase($action);
+
+                if (is_callable([$controller_object, $action])) {
+                    $controller_object->$action();
+
+                } else {
+                    throw new \Exception("Method $action (in controller $controller) not found");
+                }
+            } else {
+                throw new \Exception("Controller class $controller not found");
+            }
+        } else {
+            throw new \Exception('No route matched.', 404);
+        }
+    }
 }
