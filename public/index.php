@@ -5,7 +5,10 @@
  *
  * PHP version 8.0
  */
-
+/**
+ * Composer
+ */
+require '../vendor/autoload.php';
 /**
  * Routing
  */
