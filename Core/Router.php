@@ -1,4 +1,5 @@
 <?php
+
 namespace Core;
 
 /**
@@ -45,6 +46,25 @@ class Router
 
         $this->routes[$route] = $params;
     }
+    public function match($url)
+    {
+        foreach ($this->routes as $route => $params) {
+            if (preg_match($route, $url, $matches)) {
+                // Get named capture group values
+                foreach ($matches as $key => $match) {
+                    if (is_string($key)) {
+                        $params[$key] = $match;
+                    }
+                }
+
+                $this->params = $params;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
      * Get all the routes from the routing table
      *
