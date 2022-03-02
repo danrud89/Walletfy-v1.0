@@ -45,4 +45,13 @@ class Router
 
         $this->routes[$route] = $params;
     }
+    /**
+     * Get all the routes from the routing table
+     *
+     * @return array
+     */
+    public function getRoutes()
+    {
+        return $this->routes;
+    }
 }
