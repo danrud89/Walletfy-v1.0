@@ -50,6 +50,6 @@ class View
             $twig->addGlobal('flash_messages', \App\Flash::getMessages());
         }
 
-        echo $twig->render($template, $args);
+        return $twig->render($template, $args);
     }
 }
