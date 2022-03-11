@@ -45,4 +45,5 @@ class Config
      * @var boolean
      */
     const SECRET_KEY = 'rapidteam';
+    const CAPTCHA_SECRET = 'YOUR_CAPTCHA_SECRET_KEY';
 }
