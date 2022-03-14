@@ -1,0 +1,98 @@
+	<div class="content">
+				<div>
+					<svg class="title">
+						<text x="0" y="40">Wall€tfy!</text>
+					</svg>
+					<p class="lead text-justify">
+						Say hello to Wall€tfy! - a personal finance application that makes money management easy. The app is designed to streamline cash tracking and help you save money.
+					</p>
+					<p class="lead text-justify">
+						With Wall€tfy! you will no longer look in amazement at your wallet at the end of the month. Register and join the wide group of satisfied users just now!
+					</p>
+				</div>
+				<div class="blur">
+					<form action="signup.php" method="post" name="registerForm" autocomplete="off" id="registerForm" onsubmit="return validateRegisterForm();">
+						<p id="caps-lock-warn" style="visibility:hidden; margin:-10px 0 0 0; letter-spacing:1px;">Caps Lock is ON.</p>
+						<div class="row mb-2">
+							<label for="username">Login:</label>
+							<div class="register-input">
+								<div class="register-icon mx-auto my-auto px-2 py-2">
+									<span class="material-icons">
+										person
+									</span>
+								</div>
+								<input type="text" id="username" class="form-control mx-auto my-auto px-2 py-2" placeholder="name" aria-label="username" name="username" onkeypress="capsLock(event)" min="3" autofocus>
+								<span class="material-icons" id="ok" style="position:absolute; left:85%; top:12px;">check_circle</span>
+								<span class="material-icons" id="wrong" style="position:absolute; left:85%; top:12px;">error_outline</span>
+								<small id="login_error">Error message</small>
+								
+							</div>
+						</div>
+
+
+						<div class="row mb-2 py-2">
+							<label for="email">E-mail:</label>
+							<div class="register-input">
+								<div class="register-icon mx-auto my-auto px-2 py-2">
+									<span class="material-icons">
+										email
+									</span>
+								</div>
+								<input type="email" id="email" class="form-control mx-auto my-auto py-2" placeholder="email@test.com" aria-label="e-mail" name="email" onkeypress="capsLock(event)">
+								<span class="material-icons" id="ok" style="position:absolute; left:85%; top:12px;">check_circle</span>
+								<span class="material-icons" id="wrong" style="position:absolute; left:85%; top:12px;">error_outline</span>
+								<small id="email_error">Error message</small>
+								
+							</div>
+						</div>
+
+						<div class="row mb-2 py-2">
+							<label for="password">Password:</label>
+							<div class="register-input">
+								<div class="register-icon mx-auto my-auto px-2 py-2">
+									<span class="material-icons">
+										vpn_key
+									</span>
+								</div>
+								<input type="password" id="registerPassword" class="form-control mx-auto my-auto px-2 py-2" placeholder="password" aria-label="password" name="password" onkeypress="capsLock(event)" min="8" max="20">
+								<span class="material-icons" id="ok" style="position:absolute; left:77%; top:12px;">check_circle</span>
+								<span class="material-icons" id="wrong" style="position:absolute; left:77%; top:12px;">error_outline</span>
+								<small id="password_error">Error message</small>
+								<span class="material-icons align-middle" id="eyeIcon" style="cursor:pointer; color:black; opacity:0.6; position:absolute; left:85%; top:10px;" onclick="togglePassword('registerPassword')">visibility_off</span>
+								
+							</div>
+						</div>
+
+						<div class="row mb-3 py-2">
+							<label for="confPassword">Confirm password:</label>
+							<div class="register-input">
+								<div class="register-icon mx-auto my-auto px-2 py-2">
+									<span class="material-icons">
+										vpn_key
+									</span>
+								</div>
+								<input type="password" id="cRegisterPassword" class="form-control mx-auto my-auto px-2 py-2" placeholder="confirm password" aria-label="password" name="confpassword" onkeypress="capsLock(event)" min="8" max="20">
+								<span class="material-icons" id="ok" style="position:absolute; left:77%; top:12px;">check_circle</span>
+								<span class="material-icons" id="wrong" style="position:absolute; left:77%; top:12px;">error_outline</span>
+								<small id="cpassword_error">Error message</small>
+								<span class="material-icons align-middle" id="ceyeIcon" style="cursor:pointer; color:black; opacity:0.6; position:absolute; left:85%; top:10px;" onclick="togglePassword('cRegisterPassword')">visibility_off</span>
+								
+							</div>
+						</div>
+						
+
+						<div class="row mb-3">
+							<div class="register-button text-center">
+								<button type="submit" name="sign_up" id="regBtn" class="btn btn-lg w-100" onclick="checkRegisterInputs()">Sign Up <span class="material-icons align-bottom mb-1" style="margin-left: 0.5em;">touch_app</span></button>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="change_link ">
+								<p class="text-center mb-0">Already a member? <a href="index.php" class="p-1"><button type="button" id="regBtn" class="btn btn-sm" >Sign in</button></a></p>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
