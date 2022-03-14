@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="content">
+                <div class="mt-2">
+                    <svg class="title">
+                        <text x="0" y="40">Wall€tfy!</text>
+                    </svg>
+                    <p class="lead text-justify">
+                        Say hello to Wall€tfy! - a personal finance application that makes money management easy. The app is designed to streamline cash tracking and help you save money.
+                    </p>
+                    <p class="lead text-justify">
+                        With Wall€tfy! you will no longer look in amazement at your wallet at the end of the month. Register and join the wide group of satisfied users just now!
+                    </p>
+                </div>
+                <div class="blur">
+                    <form action="signin.php" method="post" name="loginForm" id="loginForm" autocomplete="off" onsubmit="return validateLoginForm();">
+                        <p id="caps-lock-warn" style="visibility:hidden; margin:-10px 0 0 0; letter-spacing:1px;">Caps Lock is ON !</p>
+                        <div class="row mb-4">
+                            <label for="username">E-mail:</label>
+                            <div class="login-input">
+                                <div class="login-icon mx-auto my-auto px-2 py-2">
+                                    <span class="material-icons">
+                                        email
+                                    </span>
+                                </div>
+                                <input type="email" id="email" class="form-control mx-auto my-auto py-2" placeholder="e-mail" aria-label="email" name="email" onkeypress="capLock(event)" autofocus>
+                                <span class="material-icons align-middle" id="ok" style="position:absolute; left:85%; top:12px;">check_circle</span>
+                                <span class="material-icons align-middle" id="wrong" style="position:absolute; left:85%; top:12px;">error_outline</span>
+                                <small id="email_error">Error message</small>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password">Password:</label>
+                            <div class="login-input mb-3">
+                                <div class="login-icon">
+                                    <span class="material-icons mx-auto my-auto px-2 py-2">
+                                        vpn_key
+                                    </span>
+                                </div>
+                                <input type="password" id="loginPassword" value='' class="form-control mx-auto my-auto px-2 py-2" placeholder="password" aria-label="password" name="password" onkeypress="capLock(event)">
+                                <span class="material-icons align-middle" id="ok" style="position:absolute; left:78%; top:12px;">check_circle</span>
+                                <span class="material-icons align-middle" id="wrong" style="position:absolute; left:78%; top:12px;">error_outline</span>
+                                <small id="password_error">Error message</small>
+                                <span class="material-icons align-middle" id="eyeIcon" style="cursor:pointer; color:black; opacity:0.6; position:absolute; left:85%; top:10px;" onclick="togglePassword('loginPassword')">visibility_off</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group d-md-flex w-100 mb-4 mt-3">
+                            <div class="form-check w-50 float-left" style="padding-left: 1.5em;">
+                                <label class="custom-control fill-checkbox">
+                                    <input type="checkbox" class="fill-control-input">
+                                    <span class="fill-control-description">Remember Me</span>
+                                </label>
+                            </div>
+                            <div class="w-50" style="position:absolute; left:60%">
+                                <a href="#">Forgot Password?</a>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="login-button">
+                            <a href="menu.php"><button type="submit" id="logInBtn" name="sign_in" class="btn btn-lg w-100" onclick="checkLoginInputs()">Sign In <span class="material-icons align-bottom  mb-1" style="margin-left: 1em;">input</span></button></a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="change_link ">
+                                <p class="text-center">Not a member yet? <a href="register.php" class="p-1"><button type="button" id="logInBtn" class="btn btn-sm">Sign up</button></a></p>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+{% endblock %}
