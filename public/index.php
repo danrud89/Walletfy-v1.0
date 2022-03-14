@@ -27,3 +27,9 @@ set_exception_handler('Core\Error::exceptionHandler');
  */
 require '../Core/Router.php';
 $router = new Core\Router();
+// Add the routes
+$router->add('', ['controller' => 'Login', 'action' => 'index']);
+$router->add('logout', ['controller' => 'Login', 'action' => 'destroy']);
+$router->add('{controller}/{action}');
+
+$router->dispatch($_SERVER['QUERY_STRING']);
