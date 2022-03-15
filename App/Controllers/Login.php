@@ -15,51 +15,44 @@ use \App\Flash;
 class Login extends \Core\Controller
 {
 
-    /**
-     * Show the login page
-     *
-     * @return void
-     */
-    public function newAction()
+    public function indexAction()
     {
+        if(Auth::isLoggedIn()) {
+			$this->redirect('/menu/index');
+		} else {
         View::renderTemplate('Login/index.html');
+		}
     }
 
-    /**
-     * Log in a user
-     *
-     * @return void
-     */
     public function createAction()
     {
-        $user = User::authenticate($_POST['email'], $_POST['password']);
-        
-        $remember_me = isset($_POST['remember_me']);
+		if(isset($_POST['email'])) {
+			$user = User::authenticate($_POST['email'], $_POST['password']);
+			
+			$remember_me = isset($_POST['remember_me']);
 
-        if ($user) {
+			if ($user) {
 
-            Auth::login($user, $remember_me);
+				Auth::login($user, $remember_me);
 
-            Flash::addMessage('Login successful');
+				Flash::addMessage('Login successfully.');
 
-            $this->redirect(Auth::getReturnToPage());
+				$this->redirect(Auth::getReturnToPage());
 
-        } else {
+			} else {
 
-            Flash::addMessage('Login unsuccessful, please try again', Flash::WARNING);
+				Flash::addMessage('Invalid e-mail or password.', Flash::DANGER);
 
-            View::renderTemplate('Login/new.html', [
-                'email' => $_POST['email'],
-                'remember_me' => $remember_me
-            ]);
-        }
+				View::renderTemplate('Login/index.html', [
+					'email' => $_POST['email'],
+					'remember_me' => $remember_me
+				]);
+			}
+		} else {
+			$this->redirect('/login/index');
+		}
     }
 
-    /**
-     * Log out a user
-     *
-     * @return void
-     */
     public function destroyAction()
     {
         Auth::logout();
@@ -67,16 +60,9 @@ class Login extends \Core\Controller
         $this->redirect('/login/show-logout-message');
     }
 
-    /**
-     * Show a "logged out" flash message and redirect to the homepage. Necessary to use the flash messages
-     * as they use the session and at the end of the logout method (destroyAction) the session is destroyed
-     * so a new action needs to be called in order to use the session.
-     *
-     * @return void
-     */
     public function showLogoutMessageAction()
     {
-        Flash::addMessage('Logout successful');
+        Flash::addMessage('Logout successfully.');
 
         $this->redirect('/');
     }
