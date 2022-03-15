@@ -8,7 +8,7 @@
 /**
  * Composer
  */
-require '../vendor/autoload.php';
+require dirname(__DIR__) .'/vendor/autoload.php';
 
 /**
 * Sessions
@@ -25,7 +25,6 @@ set_exception_handler('Core\Error::exceptionHandler');
 /**
  * Routing
  */
-require '../Core/Router.php';
 $router = new Core\Router();
 // Add the routes
 $router->add('', ['controller' => 'Login', 'action' => 'index']);
