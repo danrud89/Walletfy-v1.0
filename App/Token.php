@@ -5,7 +5,7 @@ namespace App;
 /**
  * Unique random tokens
  *
- * PHP version 7.0
+ * PHP version 8.0
  */
 class Token
 {
