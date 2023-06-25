@@ -1,13 +1,14 @@
 <?php
 
 namespace Core;
+
 use \App\Auth;
 use \App\Flash;
 
 /**
  * Base controller
  *
- * PHP version 8.0
+ * PHP version 7.0
  */
 abstract class Controller
 {
@@ -96,11 +97,12 @@ abstract class Controller
     {
         if (! Auth::getUser()) {
 
-            Flash::addMessage('Access forbiden - login required.', Flash::WARNING);
+            //Flash::addMessage('Please login to access that page');
+            Flash::addMessage('Aby wyświetlić tę zawartość musisz się zalogować.', Flash::WARNING);
 
             Auth::rememberRequestedPage();
 
-            $this->redirect('/login/index');
+            $this->redirect('/login/new');
         }
     }
 }

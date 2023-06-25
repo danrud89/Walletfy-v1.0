@@ -5,7 +5,7 @@ namespace Core;
 /**
  * Router
  *
- * PHP version 8.0
+ * PHP version 7.0
  */
 class Router
 {
@@ -46,6 +46,25 @@ class Router
 
         $this->routes[$route] = $params;
     }
+
+    /**
+     * Get all the routes from the routing table
+     *
+     * @return array
+     */
+    public function getRoutes()
+    {
+        return $this->routes;
+    }
+
+    /**
+     * Match the route to the routes in the routing table, setting the $params
+     * property if a route is found.
+     *
+     * @param string $url The route URL
+     *
+     * @return boolean  true if a match found, false otherwise
+     */
     public function match($url)
     {
         foreach ($this->routes as $route => $params) {
@@ -66,13 +85,13 @@ class Router
     }
 
     /**
-     * Get all the routes from the routing table
+     * Get the currently matched parameters
      *
      * @return array
      */
-    public function getRoutes()
+    public function getParams()
     {
-        return $this->routes;
+        return $this->params;
     }
 
     /**

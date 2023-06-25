@@ -1,22 +1,28 @@
 {% extends 'base.html' %}
 
+{% block title %}Rejestracja udana{% endblock %}
+
 {% block body %}
-<div class="wrapper1 mx-auto mt-5">
-    <div class="blur  my-1">
-        <div class="row mb-5">
-            <p style="font-size: 1.25em;">
-                Welcome aboard! I'm glad You say YES. Wall€tfy! was developed to create a trustworthy place for You to make money menagement easier.
-            </p>
-            <p>Please check your email to activate your account.</p>
-            <p style="font-size: 1.25em;">
-                Click the button below to return to the login page.
-            </p>
-        </div>
-        <div class="row">
-            <div class="mx-auto mt-2 mb-2">
-                <button type="button" class="btn btn-rounded btn-lg p-2" id="btnBack" onclick="window.location.href = '/'"><span class="material-icons mr-1 mt-2">reply</span>BACK TO LOGIN PAGE</button>
-            </div>
-        </div>
-    </div>
-</div>
+	
+	<div class="row vertical-center">
+		<div class="main-container py-2 px-4 col-md-8 offset-md-2 col-lg-6 offset-lg-3 my-5">
+		
+			<div class="row">	
+			
+				<div class="welcome-message m-2 pt-2 px-4">
+					<p class="welcome-text text-justify">Dziękuję za rejestrację w serwisie. Właśnie poczyniłeś pierwszy krok w kierunku osiągniecia zamierzonych celów.</p>
+					
+					<div class="row">
+						<div class="col text-center">
+							<button type="button" class="btn btn-hover color-8  btn-md mb-2" onclick="window.location.href = '/'">Przejdź do strony logowania</button>	
+						</div>
+					</div>
+				
+				</div>
+
+			</div>
+		</div>
+	</div>
+			
+
 {% endblock %}

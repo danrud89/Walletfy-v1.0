@@ -1,69 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Wall€tfy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="descritpion" content="Dzięki WALLETFY - aplikacji do zarządzania finansami, Twoje zarządzanie budżetem stanie się prostsze!" />
-    <meta name="keywords" content="budżet,finanse,wydatki,przychody,bilans" />
-    <meta http-equiv="X-UA-Compatible" content="IE = edge, chrome = 1" />
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Montserrat:400,500,700&display=swap" rel="stylesheet">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css'>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="/css/style.css" type="text/css" />
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
-    <link rel="icon" href="../img/favicon.png">
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width" initial-scale=1>
+	<meta http-equiv="X-Ua-Compatible" content="IE=edge">
+	<meta name="description" content="Naucz się zarządzać budżetem domowym i zacznij oszczedzać pieniądze już dziś!"/>	
+	
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="keywords" content="save, money, dreams, goals, home, budget, dreamchaser">
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/styles.css">
+	
+	<!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+
 </head>
 
-<body>
-    <main>
-        {% if current_user %}
-        <header id="top">
-            <h4 class="loggedAs ml-2">USER: {{ user.name }}
-            </h4>
-            <nav>
-                <ul >
-                    <li><a href="/menu/index" title="Home"><span class="material-icons mx-2 align-middle">home</span>Home</a></li>
-                    <li><a href="#" class="openModal" data-toggle="modal" data-target="#addIncome"><span class="material-icons mx-2 align-middle">savings</span>Income</a></li>
-                    <li><a href="#" class="openModal" data-toggle="modal" data-target="#addExpense" title="Expense"><span class="material-icons mx-2 align-middle">shopping_cart</span>Expense</a></li>
-                    <li><a href="/balance/index" title="Balance"><span class="material-icons mx-2 align-middle">insert_chart_outlined</span>Balance</a></li>
-                    <li><a href="/settings/index" title="Settings"><span class="material-icons mx-2 align-middle">manage_accounts</span>Settings</a></li>
-                    <li><a href="/login/destroy" title="Log Out"><span class="material-icons mx-2 align-middle">logout</span>Exit</a></li>
-                </ul>
-            </nav>
-        </header>
-        {% endif %}
-        <section id="home" style="background-image: url(../img/ewallet.png)">
-            {% block body %}
-			{% endblock %}
-            <div class="container-fluid">
-                <div class="row">
-                    <footer class="page-footer">
-                        <div class="footer-container text-left">
-                            <p>Wszelkie prawa zastrzeżone. Copyright © 2022. All Rights Reserved.
-                                Follow me:<a class="mx-3" href="#!" id="ln"><i class="fab fa-linkedin"></i></a>
-                                <a class="mx-3" href="#!" id="fb"><i class="fab fa-facebook-square"></i></a>
-                                <a class="mx-3" href="#!" id="gh"><i class="fab fa-github"></i></a>
-                            </p>
-                        </div>
-                    </footer>
-                </div>
-            </div>
-        </section>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js'></script>
-        <script src="/public/js/script.js"></script>
-        <script src="sweetalert2.all.min.js"></script>
-</body>
 
+<body>
+
+	{% if current_user %}
+		<header>
+			<nav class="navbar navbar-dark welcome-message navbar-expand-lg">
+				
+				<a class="navbar-brand" href="/menu/index"><img src="../img/favicon-white.ico" width="30" height="30" class="d-inline-block mr-1 align-bottom" alt="Logo Dreamchaser"><span class="brand-logo">Dreamchaser</span></a>
+				
+				<div class="menu-btn navbar-toggler" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-label="Przełącznik nawigacji">
+					<div class="menu-btn__burger"></div>
+				</div>
+		
+				
+				<div class="collapse navbar-collapse" id="mainmenu">
+					
+					<ul class="navbar-nav ml-auto"> 
+						
+						<li class="nav-item mr-4 {% block nav_item_1 %}{% endblock %}">
+							<a class="nav-link" href="/menu/index" > Strona główna </a>					
+						</li>
+					
+						<li class="nav-item mr-4 {% block nav_item_2 %}{% endblock %}">
+							<a class="nav-link" href="/income/index" > Dodaj przychód </a>					
+						</li>
+
+						<li class="nav-item mr-4 {% block nav_item_3 %}{% endblock %}">
+							<a class="nav-link" href="/expense/index"> Dodaj wydatek </a>
+						</li>
+
+						<li class="nav-item mr-4 {% block nav_item_4 %}{% endblock %}">
+							<a class="nav-link" href="/balance/index"> Przeglądaj bilans </a>
+						</li>	
+
+						<li class="nav-item mr-4 {% block nav_item_5 %}{% endblock %}">
+							<a class="nav-link" href="/settings/index"> Ustawienia </a>
+						</li>
+
+						<li class="nav-item mr-4 {% block nav_item_6 %}{% endblock %}">
+							<a class="nav-link" href="/login/destroy"> Wyloguj </a>
+						</li>					
+					
+					</ul>
+					
+				</div>
+			
+			</nav>
+		
+		</header>
+	{% endif %}
+		{% for message in flash_messages %}
+			<!-- <div class="alert"> -->
+			<div class="alert alert-{{ message.type }} alert-dismissible fade show mb-3" role="alert" data-auto-dismiss="3000">
+				{{ message.body }}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		{% endfor %}
+	<div class="container">
+	
+
+		{% block body %}
+		{% endblock %}
+	</div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/c41b73fbf8.js" crossorigin="anonymous"></script>
+	<script src="../js/bootstrap-auto-dismiss-alert.js"></script>
+	<script src="../js/toggleButton.js"></script>
+
+
+    {% block footer %}
+    {% endblock %}
+</body>
 </html>

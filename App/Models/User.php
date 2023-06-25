@@ -10,7 +10,7 @@ use \App\Config;
 /**
  * User model
  *
- * PHP version 8.0
+ * PHP version 7.0
  */
 class User extends \Core\Model
 {
@@ -303,7 +303,43 @@ class User extends \Core\Model
         return $stmt->execute();
     }   
 	
+	public function updateProfile()
+    {
+        $this->validateNameAndEmail();
+		
+
+        if (empty($this->errors)) {
+			
+
+			$sql = 'UPDATE users SET name = :name, email = :email WHERE id = :user_id';
+
+            $db = static::getDB();
+            $stmt = $db->prepare($sql);
+
+            $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
+            $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
+			$stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+			
+			$results = $stmt->execute();
+
+            return $results;
+        }
+
+        return false;
+    }	
 	
+	public function deleteAccount()
+    {
+        	$sql = 'DELETE FROM users WHERE id = :user_id';
+
+            $db = static::getDB();
+            $stmt = $db->prepare($sql);
+
+			$stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+			
+			$stmt->execute();
+			
+    }	
 	
 	public function changeUserPassword()
     {
@@ -331,5 +367,12 @@ class User extends \Core\Model
         }
 
         return false;
-    }		
+    }
+
+
+	
+	
+	
+	
+	
 }

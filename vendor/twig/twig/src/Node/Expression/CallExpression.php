@@ -37,7 +37,8 @@ abstract class CallExpression extends AbstractExpression
                     $compiler->raw(sprintf('$this->env->getRuntime(\'%s\')->%s', $callable[0], $callable[1]));
                 }
             } elseif ($r instanceof \ReflectionMethod && $callable[0] instanceof ExtensionInterface) {
-                $class = \get_class($callable[0]);
+                // For BC/FC with namespaced aliases
+                $class = (new \ReflectionClass(\get_class($callable[0])))->name;
                 if (!$compiler->getEnvironment()->hasExtension($class)) {
                     // Compile a non-optimized call to trigger a \Twig\Error\RuntimeError, which cannot be a compile-time error
                     $compiler->raw(sprintf('$this->env->getExtension(\'%s\')', $class));
@@ -60,7 +61,7 @@ abstract class CallExpression extends AbstractExpression
         }
     }
 
-    protected function compileArguments(Compiler $compiler, $isArray = false): void
+    protected function compileArguments(Compiler $compiler, $isArray = false)
     {
         $compiler->raw($isArray ? '[' : '(');
 
@@ -112,7 +113,7 @@ abstract class CallExpression extends AbstractExpression
         $compiler->raw($isArray ? ']' : ')');
     }
 
-    protected function getArguments($callable, $arguments)
+    protected function getArguments($callable = null, $arguments)
     {
         $callType = $this->getAttribute('type');
         $callName = $this->getAttribute('name');
@@ -152,16 +153,7 @@ abstract class CallExpression extends AbstractExpression
         $optionalArguments = [];
         $pos = 0;
         foreach ($callableParameters as $callableParameter) {
-            $name = $this->normalizeName($callableParameter->name);
-            if (\PHP_VERSION_ID >= 80000 && 'range' === $callable) {
-                if ('start' === $name) {
-                    $name = 'low';
-                } elseif ('end' === $name) {
-                    $name = 'high';
-                }
-            }
-
-            $names[] = $name;
+            $names[] = $name = $this->normalizeName($callableParameter->name);
 
             if (\array_key_exists($name, $parameters)) {
                 if (\array_key_exists($pos, $parameters)) {
@@ -237,7 +229,7 @@ abstract class CallExpression extends AbstractExpression
         return $arguments;
     }
 
-    protected function normalizeName(string $name): string
+    protected function normalizeName($name)
     {
         return strtolower(preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\d])([A-Z])/'], ['\\1_\\2', '\\1_\\2'], $name));
     }
@@ -267,8 +259,7 @@ abstract class CallExpression extends AbstractExpression
         $isPhpVariadic = false;
         if ($isVariadic) {
             $argument = end($parameters);
-            $isArray = $argument && $argument->hasType() && 'array' === $argument->getType()->getName();
-            if ($isArray && $argument->isDefaultValueAvailable() && [] === $argument->getDefaultValue()) {
+            if ($argument && $argument->isArray() && $argument->isDefaultValueAvailable() && [] === $argument->getDefaultValue()) {
                 array_pop($parameters);
             } elseif ($argument && $argument->isVariadic()) {
                 array_pop($parameters);
@@ -318,3 +309,5 @@ abstract class CallExpression extends AbstractExpression
         return $this->reflector = [$r, $callable];
     }
 }
+
+class_alias('Twig\Node\Expression\CallExpression', 'Twig_Node_Expression_Call');

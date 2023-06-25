@@ -1,5 +1,5 @@
+# Remove the question mark from the request but maintain the query string
 RewriteEngine On
-RewriteCond %{SERVER_PORT} 80
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -7,13 +7,10 @@ use \App\Models\User;
 use \App\Auth;
 use \App\Flash;
 
-/**
- * Login controller
- *
- * PHP version 8.0
- */
+
 class Login extends \Core\Controller
 {
+
 
     public function indexAction()
     {
@@ -35,13 +32,13 @@ class Login extends \Core\Controller
 
 				Auth::login($user, $remember_me);
 
-				Flash::addMessage('Login successfully.');
+				Flash::addMessage('Logowanie zakończone sukcesem.');
 
 				$this->redirect(Auth::getReturnToPage());
 
 			} else {
 
-				Flash::addMessage('Invalid e-mail or password.', Flash::DANGER);
+				Flash::addMessage('Niepoprawny e-mail lub hasło.', Flash::DANGER);
 
 				View::renderTemplate('Login/index.html', [
 					'email' => $_POST['email'],
@@ -62,7 +59,7 @@ class Login extends \Core\Controller
 
     public function showLogoutMessageAction()
     {
-        Flash::addMessage('Logout successfully.');
+        Flash::addMessage('Wylogowanie powiodło się.');
 
         $this->redirect('/');
     }
