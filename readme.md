@@ -1,5 +1,5 @@
-# Dreamchaser
-Dreamchaser is a web application that can help you manage your home budget. I introduced all the features in the video on my personal website: https://www.bartoszchodyla.pl/portoflio/aplikacja-webowa-dreamchaser. If you want to test the application, it's available at the following address: https://dreamchaser.bartoszchodyla.pl/
+# Walletfy
+Walletfy is a web application that can help you manage your home budget.
 
 <h2>Installation</h2>
 If you want to run the app on your computer to play with the code, those are the steps you need to follow: <br/>
