@@ -8,7 +8,7 @@ use App\Config;
 /**
  * Base model
  *
- * PHP version 7.0
+ * PHP version 8.0
  */
 abstract class Model
 {

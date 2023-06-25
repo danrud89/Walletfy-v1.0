@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Czas generowania: 26 Maj 2020, 12:27
+-- Czas generowania: 26 Maj 2023, 12:27
 -- Wersja serwera: 8.0.18
 -- Wersja PHP: 7.3.11
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `dreamchaser`
+-- Baza danych: `walletfy`
 --
 
 -- --------------------------------------------------------
